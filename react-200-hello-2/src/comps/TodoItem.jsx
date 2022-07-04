@@ -1,5 +1,6 @@
 const TodoItem = (props) => {
-  const { todo } = props;
+  const { todo, functions } = props;
+
   return (
     <tr>
       <td>{todo.id}</td>
