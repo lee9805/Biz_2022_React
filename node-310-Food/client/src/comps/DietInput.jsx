@@ -20,10 +20,39 @@ const DietInput = () => {
     input box 가 e.target에 담겨 전달된다
     input box 의 name 속성과 value 을 분해하여 각각 변수에 담기
     name 변수와 value 변수가 분해되고 각각의 변도 변수로 생성된다
+    각각 별도 변수로 선언된 속성을 사용하여 
+    food JSON 객체에 값을 담는다
+
      */
-    const [name, value] = e.target;
+    const { name, value } = e.target;
     setFood({ ...food, [name]: value });
-    s;
+  };
+
+  //JS ES5 이전 버전에서는 각각의 input box 에
+  //change event 를 별도로 생성하고
+  //d_date : e.target.value 와 같은 코드들 작성해야 한다
+  //현재 JS 버전에서는 하나의 event 핸들러를 통하여
+  //사용할수 있다
+  //{[name] : 값}
+  const onDateChange = (e) => {
+    setFood({ ...food, d_date: e.target });
+  };
+  const onFoodChange = (e) => {
+    setFood({ ...food, d_food: e.target });
+  };
+  const onclick = async (e) => {
+    const postOtion = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(food),
+    };
+    const res = await fetch("http://localhost:3000/food/insert", postOtion);
+    if (res.ok) {
+      const json = await res.json();
+      console.log(json);
+    }
   };
   return (
     <div className="w3-row-padding">
@@ -62,7 +91,9 @@ const DietInput = () => {
         />
       </div>
       <div className="w3-col s3">
-        <button className="w3-button w3-dark-grey">저장</button>
+        <button className="w3-button w3-dark-grey" onClick={onclick}>
+          저장
+        </button>
       </div>
     </div>
   );
