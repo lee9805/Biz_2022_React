@@ -20,7 +20,7 @@ const FoodInput = () => {
     const f_eat = document.querySelector("input[name='f_eat']");
     const f_cal = document.querySelector("input[name='f_cal']");
     const food = {
-      f_date: moment().format("YYYY[-]MM[-]DD"),
+      f_date: moment().format("HH:mm:ss"),
       f_food: f_food.value,
       f_eat: f_eat.value,
       f_cal: f_cal.value,
