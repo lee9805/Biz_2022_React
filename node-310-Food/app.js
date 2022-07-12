@@ -10,7 +10,7 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import mongoose from "mongoose";
-import { mongoURL } from "./config/mongoconfig.js";
+import { mongoURL } from "./config/mongoConfig.js";
 
 const dbConn = mongoose.connection;
 //최초연결할때 한번만 메시지 보여주기
